@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>С 14 февраля, Мариша 💖</title>
-
-  <!-- ВАЖНО для мобильных -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -18,37 +16,38 @@
       align-items: center;
       overflow: hidden;
       color: white;
-      padding: 15px;
+      padding: 20px;
     }
 
     .card {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      padding: 25px;
-      border-radius: 22px;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(12px);
+      padding: 30px 25px;
+      border-radius: 26px;
       text-align: center;
       animation: pop 1s ease;
-      box-shadow: 0 0 30px rgba(255,0,100,0.4);
-      max-width: 360px;
+      box-shadow: 0 0 40px rgba(255,0,120,0.45);
       width: 100%;
+      max-width: 380px;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 32px;
+      margin-bottom: 15px;
       animation: glow 2s infinite alternate;
-      margin-bottom: 10px;
+      line-height: 1.2;
     }
 
     p {
-      font-size: 18px;
-      margin: 10px 0;
+      font-size: 20px;
+      margin: 12px 0;
     }
 
     img {
       width: 100%;
-      max-width: 220px;
-      border-radius: 18px;
-      margin: 15px auto;
+      max-width: 260px;
+      border-radius: 22px;
+      margin: 20px auto;
       display: block;
       animation: float 3s ease-in-out infinite;
     }
@@ -60,26 +59,28 @@
 
     @keyframes glow {
       from { text-shadow: 0 0 10px #fff; }
-      to { text-shadow: 0 0 25px #ffdde1; }
+      to { text-shadow: 0 0 30px #ffd1dc; }
     }
 
     @keyframes float {
       0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-12px); }
       100% { transform: translateY(0); }
     }
 
     /* Сердечки */
     .heart {
-      position: absolute;
-      font-size: 18px;
+      position: fixed;
+      top: -30px;              /* ВАЖНО: всегда с самого верха */
+      font-size: 22px;
       animation: fall linear infinite;
       pointer-events: none;
+      z-index: 1;
     }
 
     @keyframes fall {
       from {
-        transform: translateY(-10vh);
+        transform: translateY(0);
         opacity: 1;
       }
       to {
@@ -88,11 +89,12 @@
       }
     }
 
-    /* Чуть крупнее на больших экранах */
     @media (min-width: 768px) {
-      h1 { font-size: 36px; }
-      p { font-size: 22px; }
-      .card { max-width: 420px; }
+      h1 { font-size: 40px; }
+      p { font-size: 24px; }
+      .card { max-width: 460px; }
+      img { max-width: 300px; }
+      .heart { font-size: 26px; }
     }
   </style>
 </head>
@@ -112,13 +114,24 @@
       const heart = document.createElement("div");
       heart.className = "heart";
       heart.innerHTML = "❤️";
+
+      // Появляются по всей ширине экрана
       heart.style.left = Math.random() * 100 + "vw";
+
+      // Разная скорость падения
       heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+
       document.body.appendChild(heart);
 
-      setTimeout(() => heart.remove(), 7000);
+      setTimeout(() => heart.remove(), 8000);
     }
 
+    // СРАЗУ при загрузке
+    for (let i = 0; i < 10; i++) {
+      setTimeout(createHeart, i * 200);
+    }
+
+    // И дальше постоянно
     setInterval(createHeart, 350);
   </script>
 
