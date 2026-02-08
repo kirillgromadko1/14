@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>С 14 февраля, Мариша 💖</title>
+
+  <!-- Анимации -->
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff4e78, #ff85a2);
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: white;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 25px;
+      text-align: center;
+      animation: pop 1s ease;
+      box-shadow: 0 0 30px rgba(255,0,100,0.4);
+    }
+
+    h1 {
+      font-size: 38px;
+      animation: glow 2s infinite alternate;
+    }
+
+    p {
+      font-size: 22px;
+      margin-top: 15px;
+    }
+
+    img {
+      width: 220px;
+      border-radius: 20px;
+      margin-top: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to { text-shadow: 0 0 25px #ffdde1; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Сердечки */
+    .heart {
+      position: absolute;
+      color: pink;
+      font-size: 20px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-10vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>💖 С 14 февраля, Мариша 💖</h1>
+    <p>Ты моё самое тёплое счастье 🥰</p>
+
+    <!-- ГИФКА -->
+    <img src="https://media.giphy.com/media/usao0w5CZoq44ermSB/giphy.gif" alt="love gif">
+
+    <p>Люблю тебя 💕</p>
+  </div>
+
+  <script>
+    // Генерация падающих сердечек
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
