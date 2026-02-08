@@ -4,56 +4,58 @@
   <meta charset="UTF-8">
   <title>С 14 февраля, Мариша 💖</title>
 
-  <!-- Анимации -->
+  <!-- ВАЖНО для мобильных -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       background: linear-gradient(135deg, #ff4e78, #ff85a2);
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
       color: white;
+      padding: 15px;
     }
 
     .card {
       background: rgba(255,255,255,0.15);
       backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 25px;
+      padding: 25px;
+      border-radius: 22px;
       text-align: center;
       animation: pop 1s ease;
       box-shadow: 0 0 30px rgba(255,0,100,0.4);
+      max-width: 360px;
+      width: 100%;
     }
 
     h1 {
-      font-size: 38px;
+      font-size: 28px;
       animation: glow 2s infinite alternate;
+      margin-bottom: 10px;
     }
 
     p {
-      font-size: 22px;
-      margin-top: 15px;
+      font-size: 18px;
+      margin: 10px 0;
     }
 
     img {
-      width: 220px;
-      border-radius: 20px;
-      margin-top: 20px;
+      width: 100%;
+      max-width: 220px;
+      border-radius: 18px;
+      margin: 15px auto;
+      display: block;
       animation: float 3s ease-in-out infinite;
     }
 
     @keyframes pop {
-      from {
-        transform: scale(0.5);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
+      from { transform: scale(0.6); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     @keyframes glow {
@@ -63,16 +65,16 @@
 
     @keyframes float {
       0% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+      50% { transform: translateY(-10px); }
       100% { transform: translateY(0); }
     }
 
     /* Сердечки */
     .heart {
       position: absolute;
-      color: pink;
-      font-size: 20px;
+      font-size: 18px;
       animation: fall linear infinite;
+      pointer-events: none;
     }
 
     @keyframes fall {
@@ -85,6 +87,13 @@
         opacity: 0;
       }
     }
+
+    /* Чуть крупнее на больших экранах */
+    @media (min-width: 768px) {
+      h1 { font-size: 36px; }
+      p { font-size: 22px; }
+      .card { max-width: 420px; }
+    }
   </style>
 </head>
 <body>
@@ -93,28 +102,24 @@
     <h1>💖 С 14 февраля, Мариша 💖</h1>
     <p>Ты моё самое тёплое счастье 🥰</p>
 
-    <!-- ГИФКА -->
     <img src="https://media.giphy.com/media/usao0w5CZoq44ermSB/giphy.gif" alt="love gif">
 
     <p>Люблю тебя 💕</p>
   </div>
 
   <script>
-    // Генерация падающих сердечек
     function createHeart() {
       const heart = document.createElement("div");
-      heart.classList.add("heart");
+      heart.className = "heart";
       heart.innerHTML = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+      heart.style.animationDuration = Math.random() * 3 + 4 + "s";
       document.body.appendChild(heart);
 
-      setTimeout(() => {
-        heart.remove();
-      }, 6000);
+      setTimeout(() => heart.remove(), 7000);
     }
 
-    setInterval(createHeart, 300);
+    setInterval(createHeart, 350);
   </script>
 
 </body>
